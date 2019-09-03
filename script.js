@@ -26,10 +26,26 @@ const checkResult = (p, ai) => {
         return 'draw';
     }
     else if ((p === 'paper' && ai === 'rock') || (p === 'rock' && ai === 'scissors') || (p === 'scissors' && ai === 'paper')) {
-        return 'win';
+        return 'you';
     }
     else {
-        return 'lose';
+        return 'opponent';
+    }
+}
+
+const viewResult = (p, ai, result) => {
+    document.querySelector('.yChoice').textContent = 'Your choice:' + p;
+    document.querySelector('.oChoice').textContent = "Opponent's choice:" + ai;
+    document.querySelector('.winner').textContent = 'The winner is:' + result;
+    document.querySelector('.game').textContent = 'Games:' + ++gResults.numbers;
+    if (result === 'draw') {
+        document.querySelector('.draw').textContent = 'Draw:' + ++gResults.draws;
+    }
+    else if (result === 'you') {
+        document.querySelector('.win').textContent = 'Win:' + ++gResults.wins;
+    }
+    else if (result === 'opponent') {
+        document.querySelector('.lose').textContent = 'Lose:' + ++gResults.losses;
     }
 }
 
@@ -38,6 +54,7 @@ const startGame = () => {
     game.ai = aiChoice();
     const gameResult = checkResult(game.player, game.ai);
     console.log(gameResult);
+    viewResult(game.player, game.ai, gameResult);
 }
 
 choice.forEach(div => div.addEventListener('click', select));
