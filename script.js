@@ -21,9 +21,23 @@ const select = (e) => {
     console.log(game.player);
 }
 
+const checkResult = (p, ai) => {
+    if (p === ai) {
+        return 'draw';
+    }
+    else if ((p === 'paper' && ai === 'rock') || (p === 'rock' && ai === 'scissors') || (p === 'scissors' && ai === 'paper')) {
+        return 'win';
+    }
+    else {
+        return 'lose';
+    }
+}
+
 const startGame = () => {
     if (!game.player) return alert('select an option');
     game.ai = aiChoice();
+    const gameResult = checkResult(game.player, game.ai);
+    console.log(gameResult);
 }
 
 choice.forEach(div => div.addEventListener('click', select));
