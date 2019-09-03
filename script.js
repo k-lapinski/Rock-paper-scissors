@@ -24,11 +24,9 @@ const select = (e) => {
 const checkResult = (p, ai) => {
     if (p === ai) {
         return 'draw';
-    }
-    else if ((p === 'paper' && ai === 'rock') || (p === 'rock' && ai === 'scissors') || (p === 'scissors' && ai === 'paper')) {
+    } else if ((p === 'paper' && ai === 'rock') || (p === 'rock' && ai === 'scissors') || (p === 'scissors' && ai === 'paper')) {
         return 'you';
-    }
-    else {
+    } else {
         return 'opponent';
     }
 }
@@ -40,13 +38,15 @@ const viewResult = (p, ai, result) => {
     document.querySelector('.game').textContent = 'Games:' + ++gResults.numbers;
     if (result === 'draw') {
         document.querySelector('.draw').textContent = 'Draw:' + ++gResults.draws;
-    }
-    else if (result === 'you') {
+    } else if (result === 'you') {
         document.querySelector('.win').textContent = 'Win:' + ++gResults.wins;
-    }
-    else if (result === 'opponent') {
+    } else if (result === 'opponent') {
         document.querySelector('.lose').textContent = 'Lose:' + ++gResults.losses;
     }
+}
+
+const endGame = () => {
+    game.player = '';
 }
 
 const startGame = () => {
@@ -55,6 +55,7 @@ const startGame = () => {
     const gameResult = checkResult(game.player, game.ai);
     console.log(gameResult);
     viewResult(game.player, game.ai, gameResult);
+    endGame();
 }
 
 choice.forEach(div => div.addEventListener('click', select));
