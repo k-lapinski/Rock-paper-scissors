@@ -89,6 +89,7 @@ h3 {
 
 .images {
     width: 100%;
+
 }
 
 i {
@@ -97,6 +98,7 @@ i {
     float: left;
     width: 33.33%;
     margin-top: 7%;
+    margin-bottom: 10%;
 }
 
 i:hover {
@@ -117,7 +119,6 @@ i:hover {
     position: relative;
     text-align: center;
     color: #000000;
-    margin-top: 10%;
     margin-left: 50%;
     margin-right: 50%;
     transform: translate(-50%, 0);
